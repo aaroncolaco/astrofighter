@@ -34,8 +34,8 @@ function loaded () {
 		this.width = 20 + this.dimension * 50;
 		this.height = 30 + this.dimension * 50;
 		this.speed = 0;
-		this.xmovement = Math.random() / 3;
-		this.ymovement = Math.random() / 3;
+		this.xmovement = Math.random() * 2;
+		this.ymovement = Math.random() * 2;
 		this.angle = 30;
 		this.rotating = false;
 		this.clkwise = true;
@@ -68,22 +68,23 @@ function loaded () {
 	};
 
 	Meteor.prototype.update = function() {
-
-		for (var i = 0; i < meteor.length; i++) {
 			
-			this.x += this.xmovement;
-			this.y += this.ymovement;
+		this.x += this.xmovement;
+		this.y += this.ymovement;
+		//to wrap the asteroids
+		if (this.x > global.width) {
+			this.x = 0;
+		} else if (this.x < 0) {
+			this.x = global.width;
+		} else if (this.y > global.height) {
+			this.y = 0;
+		} else if (this.y < 0) {
+			this.y = global.height;
+		};
 
-			//to wrap the asteroids
-			if (this.x > global.width) {
-				this.x = 0;
-			} else if (this.x < 0) {
-				this.x = global.width;
-			} else if (this.y > global.height) {
-				this.y = 0;
-			} else if (this.y < 0) {
-				this.y = global.height;
-			};
+		/*Collision detection*/
+		if ( (Math.abs(this.x - rocket.x) < 30) && (Math.abs(this.y - rocket.y) < 30) ) {
+			console.log("You crashed!");
 		};
 	};
 
