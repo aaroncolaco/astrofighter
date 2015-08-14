@@ -3,7 +3,7 @@ function loaded () {
 	var context = null, canvas, global = {};
 	var friction = 0.95;
 	global.meteorNumber = 8;
-	var meteor = [];
+	var meteor = [], bullet = [];
 	
 	var rocket = {
 		spriteNormal: null,
@@ -42,20 +42,22 @@ function loaded () {
 	};
 
 	var Bullet = function() {
-		this.sprite = null;
-		this.x = null;
-		this.y = null;
+		this.sprite = document.getElementById('bullet');   /*Place this in init func*/
+		/*Added integers to align to tip of rocket. Check by commenting out update func*/
+		this.x = rocket.x + 1 ;
+		this.y = rocket.y + 7 ;
 		this.width = 5 ;
 		this.height = 5 ;
-		this.speed = 0;
+		this.speed = 2;
 	};
 
 	Bullet.prototype.draw = function() {
-
+		context.drawImage(this.sprite, this.x, this.y, this.width, this.height);
 	};
 
 	Bullet.prototype.update = function() {
-		
+		this.x += Math.sin(rocket.angle*(Math.PI/180))*this.speed;
+		this.y += Math.cos(rocket.angle*(Math.PI/180))*this.speed*-1;
 	};
 
 	/*for collisions*/
@@ -228,6 +230,9 @@ function loaded () {
 			meteor.push(new Meteor());
 			meteor[i].sprite = document.getElementById('asteroid');
 		}; 
+
+		bullet.push(new Bullet());
+
 		document.addEventListener('keydown', keydown);
 		document.addEventListener('keyup', keyup);
 	};
@@ -235,14 +240,20 @@ function loaded () {
 	function update () {
 		rocket.update();
 		
+		bullet[0].update();
+
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].update();
 		};
 	};
 	
 	function draw () {
+		// clear full context to redraw new stuff
 		context.clearRect(0, 0, global.width, global.height);
 		rocket.draw();
+
+		bullet[0].draw();
+
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].draw();
 		};
