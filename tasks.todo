@@ -3,8 +3,12 @@
  ✔ Wrap around @done (15-07-18 21:28)
  ✔ Remove the move forward flag. Use only the move flag. @done (15-07-22 23:17)
  ✔ Add basic collison detection. @done (16-07-15 00:19)
- ☐ Add shooting feature
- ☐ Meteors break up on successful shot
- ☐ Add proper bullet sprite
- ☐ Improve collision detection
- ☐ Add scoreboard with high scores
+ Add shooting feature:
+   ✔ Add bullets on spacebar @done (15-08-22 00:43)
+   ☐ Collision detection for bullets
+   ☐ Meteor need to break up on successful shot
+ Improvements to be made:
+  ☐ Add proper bullet sprite
+  ☐ Improve collision detection
+  Extra stuff:
+    ☐ Add scoreboard with high scores
