@@ -48,7 +48,8 @@ function loaded () {
 		this.y = rocket.y + 7 ;
 		this.width = 5 ;
 		this.height = 5 ;
-		this.speed = 2;
+		this.speed = 7 ;
+		this.angle = rocket.angle;
 	};
 
 	Bullet.prototype.draw = function() {
@@ -56,14 +57,9 @@ function loaded () {
 	};
 
 	Bullet.prototype.update = function() {
-		this.x += Math.sin(rocket.angle*(Math.PI/180))*this.speed;
-		this.y += Math.cos(rocket.angle*(Math.PI/180))*this.speed*-1;
+		this.x += Math.sin(this.angle*(Math.PI/180))*this.speed;
+		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
 	};
-
-	/*for collisions*/
-	var intersectRect = function(a, b) {
-		
-	}
 
 	Meteor.prototype.draw = function() {
 		context.drawImage(this.sprite, this.x, this.y, this.width, this.height);
@@ -194,6 +190,9 @@ function loaded () {
 			case global.down:
 				rocket.down();
 				break;
+			case global.space:
+				bullet.push(new Bullet());
+				break;
 		}
 	};
 
@@ -219,6 +218,7 @@ function loaded () {
 		global.width = canvas.width = window.innerWidth;
 		global.height = canvas.height = window.innerHeight;
 		global.left = 37, global.up = 38, global.right = 39, global.down = 40;
+		global.space = 32;
 
 		rocket.x = (rocket.width + global.width)/2;
 		rocket.y = (rocket.height + global.height)/2;
@@ -239,11 +239,13 @@ function loaded () {
 
 	function update () {
 		rocket.update();
-		
-		bullet[0].update();
 
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].update();
+		};
+
+		for (var i = 0; i < bullet.length; i++) {
+			bullet[i].update();
 		};
 	};
 	
@@ -252,10 +254,12 @@ function loaded () {
 		context.clearRect(0, 0, global.width, global.height);
 		rocket.draw();
 
-		bullet[0].draw();
-
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].draw();
+		};
+
+		for (var i = 0; i < bullet.length; i++) {
+			bullet[i].draw()
 		};
 	};
 
