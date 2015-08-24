@@ -231,8 +231,6 @@ function loaded () {
 			meteor[i].sprite = document.getElementById('asteroid');
 		}; 
 
-		bullet.push(new Bullet());
-
 		document.addEventListener('keydown', keydown);
 		document.addEventListener('keyup', keyup);
 	};
