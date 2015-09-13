@@ -59,7 +59,17 @@ function loaded () {
 	Bullet.prototype.update = function() {
 		this.x += Math.sin(this.angle*(Math.PI/180))*this.speed;
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
+    
+		for(var i = 0; i < bullet.length; i++) {
+			for (var j = 0; j < global.meteorNumber; j++) {
+			if ( (Math.abs(this.x - Meteor.x) < 1) && (Math.abs(this.y - Meteor.y) < 1) ) {
+				console.log("You crashed!");
+			};
+		};
 	};
+        
+	};
+	
 
 	Meteor.prototype.draw = function() {
 		context.drawImage(this.sprite, this.x, this.y, this.width, this.height);
@@ -241,10 +251,13 @@ function loaded () {
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].update();
 		};
-
-		for (var i = 0; i < bullet.length; i++) {
+       
+	
+		for(var i = 0; i < bullet.length; i++) {
 			bullet[i].update();
+
 		};
+
 	};
 	
 	function draw () {
