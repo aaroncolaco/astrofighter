@@ -45,7 +45,7 @@ function loaded () {
 		this.sprite = document.getElementById('bullet');   /*Place this in init func*/
 		/*Added integers to align to tip of rocket. Check by commenting out update func*/
 		this.x = rocket.x + 1 ;
-		this.y = rocket.y + 7 ;
+		this.y = rocket.y + 6.5 ;
 		this.width = 5 ;
 		this.height = 5 ;
 		this.speed = 7 ;
