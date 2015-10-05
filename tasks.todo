@@ -6,10 +6,11 @@
  ☐ Collision detection between meteors
  Add shooting feature:
    ✔ Add bullets on spacebar @done (15-08-22 00:43)
-   ☐ Collision detection for bullets
+   ✔ Collision detection for bullets @done (15-10-05 13:53)
    ☐ Meteor need to break up on successful shot
  Improvements to be made:
   ☐ Add proper bullet sprite
+  ✔ Align bullet to tip of rocket @done (15-10-05 13:54)
   ☐ Improve collision detection
   Extra stuff:
     ☐ Add scoreboard with high scores
