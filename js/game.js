@@ -59,7 +59,7 @@ function loaded () {
 	Bullet.prototype.update = function() {
 		this.x += Math.sin(this.angle*(Math.PI/180))*this.speed;
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
-    
+
 		for(var i = 0; i < bullet.length; i++) {
 			for (var j = 0; j < global.meteorNumber; j++) {
 				if ( (Math.abs(this.x - meteor[j].x) < 25) && (Math.abs(this.y - meteor[j].y) < 25) ) {
@@ -67,7 +67,6 @@ function loaded () {
 				};
 			};
 		};
-        
 	};
 	
 
@@ -251,7 +250,6 @@ function loaded () {
 		for (var i = 0; i < global.meteorNumber; i++) {
 			meteor[i].update();
 		};
-       
 	
 		for(var i = 0; i < bullet.length; i++) {
 			bullet[i].update();
