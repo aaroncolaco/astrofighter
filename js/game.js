@@ -94,6 +94,20 @@ function loaded () {
 		if ( (Math.abs(this.x - rocket.x) < 30) && (Math.abs(this.y - rocket.y) < 30) ) {
 			console.log("You crashed!");
 		};
+
+		/*Collision detection for meteors*/
+
+		for (var i=0; i < global.meteorNumber; i++) {
+			if (Math.abs(this.x)!=Math.abs(meteor[i].x)) {
+				if(Math.abs(this.y)!=Math.abs(meteor[i].y)) {
+					if ( (Math.abs(this.x - meteor[i].x) < 25) && (Math.abs(this.y-meteor[i].y) < 25) ) {
+						console.log("pop");
+										
+					};
+				};
+			};	
+
+		};
 	};
 
 	rocket.up = function(status) {
