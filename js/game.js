@@ -101,6 +101,9 @@ function loaded () {
 				if(Math.abs(this.y)!=Math.abs(meteor[i].y)) {
 					if ( (Math.abs(this.x - meteor[i].x) < 25) && (Math.abs(this.y-meteor[i].y) < 25) ) {
 						console.log("pop");
+
+						meteor[i].xmovement = 1 + meteor[i].ymovement;
+						meteor[i].ymovement = 1 - meteor[i].xmovement;
 										
 					};
 				};
