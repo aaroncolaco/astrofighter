@@ -61,8 +61,8 @@ function loaded () {
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
 
 		/*Collision detection between bullet & meteor*/
-			for (var met of meteor) { /*met => meteor object in the meteor array*/
-			/*if 'in' is used, met => indexes. With 'of', met => values*/
+			for (var met of meteor) {
+			/*if 'in' is used, met => index no. With 'of', met => values(object)*/
 				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) ) {
 					console.log("BOOMMMMMM!");
 				};
@@ -95,8 +95,8 @@ function loaded () {
 		};
 
 		/*Collision detection between meteors*/
-		for (var met of meteor) {	/*met => meteor object in the meteor array*/
-			/*if 'in' is used, met => indexes. With 'of', met => values*/
+		for (var met of meteor) {
+			/*if 'in' is used, met => index no. With 'of', met => values(object)*/
 			
 			if(!Object.is(this, met)) { 
 				/*Check that it isn't same meteor.Object.is => ES6 method*/
