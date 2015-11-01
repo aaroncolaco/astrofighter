@@ -60,9 +60,11 @@ function loaded () {
 		this.x += Math.sin(this.angle*(Math.PI/180))*this.speed;
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
 
-		for(var i = 0; i < bullet.length; i++) {
-			for (var j = 0; j < global.meteorNumber; j++) {
-				if ( (Math.abs(this.x - meteor[j].x) < 25) && (Math.abs(this.y - meteor[j].y) < 25) ) {
+		/*Collision detection between bullet & meteor*/
+		for(var shot in bullet) {
+			for (var met of meteor) { /*met => meteor object in the meteor array*/
+			/*if 'in' is used, met => indexes. With 'of', met => values*/
+				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) ) {
 					console.log("BOOMMMMMM!");
 				};
 			};
@@ -89,26 +91,23 @@ function loaded () {
 			this.y = global.height;
 		};
 
-		/*Collision detection*/
+		/*Collision detection with rocket*/
 		if ( (Math.abs(this.x - rocket.x) < 30) && (Math.abs(this.y - rocket.y) < 30) ) {
 			console.log("You crashed!");
 		};
 
-		/*Collision detection for meteors*/
-
-		for (var i=0; i < global.meteorNumber; i++) {
-			if (Math.abs(this.x)!=Math.abs(meteor[i].x)) {
-				if(Math.abs(this.y)!=Math.abs(meteor[i].y)) {
-					if ( (Math.abs(this.x - meteor[i].x) < 25) && (Math.abs(this.y-meteor[i].y) < 25) ) {
-						console.log("pop");
-
-						meteor[i].xmovement = 1 + meteor[i].ymovement;
-						meteor[i].ymovement = 1 - meteor[i].xmovement;
-										
-					};
+		/*Collision detection between meteors*/
+		for (var met of meteor) {	/*met => meteor object in the meteor array*/
+			/*if 'in' is used, met => indexes. With 'of', met => values*/
+			
+			if(!Object.is(this, met)) { 
+				/*Check that it isn't same meteor.Object.is => ES6 method*/
+				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y-met.y) < 25) ) {
+					console.log("pop");
+					met.xmovement = 1 + met.ymovement;
+					met.ymovement = 1 - met.xmovement;
 				};
-			};	
-
+			};
 		};
 	};
 
@@ -264,13 +263,12 @@ function loaded () {
 	function update () {
 		rocket.update();
 
-		for (var i = 0; i < global.meteorNumber; i++) {
-			meteor[i].update();
+		for (var met of meteor) {
+			met.update();
 		};
 	
-		for(var i = 0; i < bullet.length; i++) {
-			bullet[i].update();
-
+		for(var shot of bullet) {
+			shot.update();
 		};
 
 	};
@@ -280,12 +278,12 @@ function loaded () {
 		context.clearRect(0, 0, global.width, global.height);
 		rocket.draw();
 
-		for (var i = 0; i < global.meteorNumber; i++) {
-			meteor[i].draw();
+		for (var met of meteor) {
+			met.draw();
 		};
 
-		for (var i = 0; i < bullet.length; i++) {
-			bullet[i].draw()
+		for (var shot of bullet) {
+			shot.draw()
 		};
 	};
 
