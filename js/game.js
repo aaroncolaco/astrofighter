@@ -61,14 +61,12 @@ function loaded () {
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
 
 		/*Collision detection between bullet & meteor*/
-		for(var shot in bullet) {
 			for (var met of meteor) { /*met => meteor object in the meteor array*/
 			/*if 'in' is used, met => indexes. With 'of', met => values*/
 				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) ) {
 					console.log("BOOMMMMMM!");
 				};
 			};
-		};
 	};
 	
 
