@@ -14,7 +14,7 @@
    ☐ Meteor need to break up on successful shot -Prajakta pending
    ☐ Destroy bullet once outside screen
  Improvements to be made:
-  ☐ Add proper bullet sprite - Joston pending
+  ✔ Add proper bullet sprite @done (16-01-04 12:49)
   ☐ Align bullet to tip of rocket - Natasha pending
   ☐ Improve collision detection
   Extra stuff:
