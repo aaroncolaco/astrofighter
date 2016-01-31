@@ -8,6 +8,7 @@ get '/' do
 end
 
 get '/game/?' do 	# for /game & /game/ 
+	@title = "Asteroid Game"
 	erb :game
 end
 
