@@ -12,6 +12,4 @@ no_of_players.times do |var|
 end
 
 # Clear db
-# Player.count.times do |var|
-# 	Player.last.destroy
-# end
+# Player.all.destroy
