@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">
+				<i class="fa fa-rocket"> <%= settings.app_name %></i>
+			</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+			<!-- current? is a helper method that returns
+			'active' if route matches arg. nil otherwise.
+			Done to show active link in navbar -->
+				<li class= <%= current? %> >
+					<a href="/">Home</a>
+				</li>
+				<li class=<%= current?( "/about") %> >
+					<a href="/about">About</a>
+				</li>
+				<li class=<%= current?( "/contact") %> >
+					<a href="/contact">Contact Us</a>
+				</li>
+				<li class=<%= current?( "/scores") %> >
+					<a href="/scores">Scores</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<% if !session[:admin] %>
+					<a href="/login" class="btn btn-default navbar-btn">Sign in</a>
+				<% else %>
+					<a href="/logout" class="btn btn-default btn-danger navbar-btn">Sign out</a>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</nav>

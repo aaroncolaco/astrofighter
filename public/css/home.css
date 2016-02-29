@@ -1,0 +1,31 @@
+.jumbotron {
+	background-image:url('/images/space1.jpg');
+	min-height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: 0%;
+}
+
+.jumbotron .container {
+	position: relative;
+	padding-top: 10%;
+}
+
+.jumbotron h1 {
+	color: #ffffff;
+	font-size: 4.5em;  
+}
+
+.jumbotron p {
+	color: #ffffff;
+	font-size: 1.8em;
+}
+
+.jumbotron .btn-default {
+	color: #ffffff;
+	background-color: transparent;
+	font-size: 1.2em;
+}
+.jumbotron .btn-default:hover {
+	background-color: #5a5aad;
+}
