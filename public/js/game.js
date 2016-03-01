@@ -1,4 +1,6 @@
 function loaded () {
+
+	"use strict"
 	
 	var context = null, canvas, global = {};
 	var friction = 0.95;
@@ -65,13 +67,13 @@ function loaded () {
 		this.y += Math.cos(this.angle*(Math.PI/180))*this.speed*-1;
 
 		/*Collision detection between bullet & meteor*/
-			for (var met of meteor) {
+			for (let met of meteor) {
 			/*if 'in' is used, met => index no. With 'of', met => values(object)*/
 				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) && (this.hit === false) ) {
 					console.log("BOOMMMMMM!");
 
 					// Get hit meteor's metadata
-					var meteorSize = met.width;
+					let meteorSize = met.width;
 
 					// Bullet & Meteor vanish
 					this.sprite = document.getElementById('null');
@@ -99,7 +101,7 @@ function loaded () {
 					function addMeteors (newMeteorSize) {
 						
 						// Insert two new meteors
-						for(var i = 0; i < 2; i++) {
+						for(let i = 0; i < 2; i++) {
 
 							meteor.push(new Meteor(newMeteorSize));
 							
@@ -237,7 +239,7 @@ function loaded () {
 	}
 
 	function keydown (event) {
-		var key = event.keyCode;
+		let key = event.keyCode;
 		
 		switch (key) {
 			case global.left:
@@ -259,7 +261,7 @@ function loaded () {
 	};
 
 	function keyup (event) {
-		var key = event.keyCode;
+		let key = event.keyCode;
 		
 		switch (key) {
 			case global.left:
@@ -288,7 +290,7 @@ function loaded () {
 		rocket.spriteNormal = document.getElementById('rocket-normal');
 		rocket.spriteMoving = document.getElementById('rocket-moving');
 
-		for (var i = 0; i < global.initialMeteorNumber; i++) {
+		for (let i = 0; i < global.initialMeteorNumber; i++) {
 			meteor.push(new Meteor(global.meteorSizeLarge));
 		}; 
 
@@ -299,11 +301,11 @@ function loaded () {
 	function update () {
 		rocket.update();
 
-		for (var met of meteor) {
+		for (let met of meteor) {
 			met.update();
 		};
 	
-		for(var shot of bullet) {
+		for(let shot of bullet) {
 			shot.update();
 		};
 
@@ -314,11 +316,11 @@ function loaded () {
 		context.clearRect(0, 0, global.width, global.height);
 		rocket.draw();
 
-		for (var met of meteor) {
+		for (let met of meteor) {
 			met.draw();
 		};
 
-		for (var shot of bullet) {
+		for (let shot of bullet) {
 			shot.draw()
 		};
 	};
