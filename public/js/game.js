@@ -2,8 +2,12 @@ function loaded () {
 	
 	var context = null, canvas, global = {};
 	var friction = 0.95;
-	global.meteorNumber = 8;
 	var meteor = [], bullet = [];
+	
+	global.initialMeteorNumber = 8;
+	global.meteorSizeLarge = 70;
+	global.meteorSizeMedium = 50;
+	global.meteorSizeSmall = 30;
 	
 	var rocket = {
 		spriteNormal: null,
@@ -26,13 +30,12 @@ function loaded () {
 		update: null
 	};
 
-	var Meteor = function() {
-		this.sprite = null;
+	var Meteor = function(meteorSize) {
+		this.sprite = document.getElementById('asteroid');
 		this.x = Math.random() * global.width;
 		this.y = Math.random() * global.height;
-		this.dimension = Math.random();
-		this.width = 20 + this.dimension * 50;
-		this.height = 30 + this.dimension * 50;
+		this.width = meteorSize;
+		this.height = meteorSize;
 		this.speed = 0;
 		this.xmovement = Math.random() * 2;
 		this.ymovement = Math.random() * 2;
@@ -50,6 +53,7 @@ function loaded () {
 		this.height = 5 ;
 		this.speed = 7 ;
 		this.angle = rocket.angle;
+		this.hit = false;
 	};
 
 	Bullet.prototype.draw = function() {
@@ -63,8 +67,55 @@ function loaded () {
 		/*Collision detection between bullet & meteor*/
 			for (var met of meteor) {
 			/*if 'in' is used, met => index no. With 'of', met => values(object)*/
-				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) ) {
+				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) && (this.hit === false) ) {
 					console.log("BOOMMMMMM!");
+
+					// Get hit meteor's metadata
+					var meteorSize = met.width;
+
+					// Bullet & Meteor vanish
+					this.sprite = document.getElementById('null');
+					met.sprite = document.getElementById('null');
+
+					// Remove bullet & meteor from their arrays
+					bullet.splice(bullet.indexOf(this), -1);
+					meteor.splice(meteor.indexOf(met), -1);
+
+					// Break Meteor based on size
+					switch(meteorSize) {
+						case global.meteorSizeLarge:
+							addMeteors(global.meteorSizeMedium);
+							break;
+						case global.meteorSizeMedium:
+							addMeteors(global.meteorSizeSmall);
+							break;
+						case global.meteorSizeSmall:
+							break;
+						default:
+							console.log("Meteor size is undetermined")
+							break;
+					}
+
+					function addMeteors (newMeteorSize) {
+						
+						// Insert two new meteors
+						for(var i = 0; i < 2; i++) {
+
+							meteor.push(new Meteor(newMeteorSize));
+							
+							// Spawning the new meteors at different locations after breaking
+							if(i === 1) {
+								meteor[meteor.length - 1].x = met.x + 5;
+								meteor[meteor.length - 1].y = met.y + 5;
+							} else {
+								meteor[meteor.length - 1].x = met.x - 5;
+								meteor[meteor.length - 1].y = met.y - 5;
+							}
+						}
+					};
+
+					// Making sure one bullet's hit is registered only once
+					this.hit = true;
 				};
 			};
 	};
@@ -94,19 +145,7 @@ function loaded () {
 			console.log("You crashed!");
 		};
 
-		/*Collision detection between meteors*/
-		for (var met of meteor) {
-			/*if 'in' is used, met => index no. With 'of', met => values(object)*/
-			
-			if(!Object.is(this, met)) { 
-				/*Check that it isn't same meteor.Object.is => ES6 method*/
-				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y-met.y) < 25) ) {
-					console.log("pop");
-					met.xmovement = 1 + met.ymovement;
-					met.ymovement = 1 - met.xmovement;
-				};
-			};
-		};
+		
 	};
 
 	rocket.up = function(status) {
@@ -249,9 +288,8 @@ function loaded () {
 		rocket.spriteNormal = document.getElementById('rocket-normal');
 		rocket.spriteMoving = document.getElementById('rocket-moving');
 
-		for (var i = 0; i < global.meteorNumber; i++) {
-			meteor.push(new Meteor());
-			meteor[i].sprite = document.getElementById('asteroid');
+		for (var i = 0; i < global.initialMeteorNumber; i++) {
+			meteor.push(new Meteor(global.meteorSizeLarge));
 		}; 
 
 		document.addEventListener('keydown', keydown);

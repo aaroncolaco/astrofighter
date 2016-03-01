@@ -11,7 +11,7 @@
  Add shooting feature:
    ✔ Add bullets on spacebar @done (15-08-22 00:43)
    ✔ Collision detection for bullets @done (15-10-05 13:53)
-   ☐ Meteor need to break up on successful shot -Prajakta pending
+   ✔ Meteor need to break up on successful shot @done (16-03-01 21:17)
    ☐ Destroy bullet once outside screen
  Improvements to be made:
   ✔ Add proper bullet sprite @done (16-01-04 12:49)
