@@ -80,8 +80,8 @@ function loaded () {
 					met.sprite = document.getElementById('null');
 
 					// Remove bullet & meteor from their arrays
-					bullet.splice(bullet.indexOf(this), -1);
-					meteor.splice(meteor.indexOf(met), -1);
+					bullet.splice(bullet.indexOf(this), 1);
+					meteor.splice(meteor.indexOf(met), 1);
 
 					// Break Meteor based on size
 					switch(meteorSize) {
