@@ -1,4 +1,5 @@
 require 'sinatra'
+require './player'
 
 # Reload if in development mode
 require 'sinatra/reloader' if development?
@@ -19,7 +20,8 @@ get '/game/?' do 	# for /game & /game/
 end
 
 get '/scores' do
-	'High Scores'
+	@player = Player.all(:order => [ :score.desc ])	# Scores in descending order
+	erb :scores
 end
 
 # All errors

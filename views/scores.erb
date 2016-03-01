@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="/css/scores.css">	
+
+<div class="scores" id="scores">
+	<div class="container">
+		<h1>
+			Top space explorers
+		</h1>
+		<% if @player.any? %>
+			<ul id="player">
+				<% @player.each do |player| %>
+					<li>
+						<span class="player-name"><%= "#{player.name}" %></span>
+						<span class="player-score"><%= "#{player.score}" %></span>
+					</li>
+				<% end %>
+			</ul>
+		<% else %>
+			<p>Nobody has dared to explore space!</p>
+		<% end %>
+
+		<a href="/game" class="btn btn-default">Play Game</a>
+	</div>
+</div>

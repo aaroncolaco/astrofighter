@@ -1,0 +1,52 @@
+.scores {
+	background-image:url('/images/space3.jpg');
+	min-height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: 0%;
+	background-attachment: fixed;
+}
+
+.scores .container {
+	position: relative;
+	padding-top: 10%;
+}
+
+.scores h1 {
+	color: #ffffff;
+	font-size: 4.5em;  
+}
+
+.scores ul {
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+
+	list-style-type: none;
+
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.scores li {
+	color: #ffffff;
+	font-size: 1.8em;
+	margin-bottom: 1%;
+}
+.scores li .player-name {
+	margin-left: 2%;
+}
+.scores li .player-score {
+	margin-left: 85%;
+}
+
+.scores .btn-default {
+	color: #ffffff;
+	background-color: transparent;
+	font-size: 1.2em;
+	margin-bottom: 10%;
+	font-weight: bold;
+}
+.scores .btn-default:hover {
+	background-color: #5a5aad;
+}
