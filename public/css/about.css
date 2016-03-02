@@ -1,0 +1,23 @@
+.about {
+	background-image:url('/images/space3.jpg');
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;   
+}
+
+.about .container {
+	position: relative;
+	top:100px;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.about h1 {
+	color: #ffffff;
+	font-size: 4em;
+}
+
+.about p {
+	color: #ffffff;
+	font-size: 1.5em;
+}

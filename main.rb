@@ -11,7 +11,7 @@ get '/' do
 end
 
 get '/about' do
-	'About Page'
+	erb :about
 end
 
 get '/game/?' do 	# for /game & /game/ 
@@ -26,16 +26,14 @@ end
 
 # All errors
 error do
-	# @title = "Error"
-	# erb :error
-	'Something boring happened'
+	@title = "Error"
+	erb :error
 end
 
 # Not Found error
 not_found do
-	# @title = "Not Found"
-	# erb :not_found
-	'Not found'
+	@title = "Not Found"
+	erb :not_found
 end
 
 helpers do

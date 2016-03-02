@@ -1,0 +1,19 @@
+.not_found {
+	background-image:url('/images/space4.jpg');
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;   
+}
+
+.not_found .container {
+	position: relative;
+	top:100px;
+	background: rgba(0, 0, 0, 0.5);
+
+}
+
+.not_found h1 {
+	color: #ffffff;
+	font-size: 4em;
+}
