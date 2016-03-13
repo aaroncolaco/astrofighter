@@ -6,6 +6,25 @@ require 'sinatra/reloader' if development?
 
 set :app_name, 'Astrofighter'
 
+# for development
+configure :development do
+	DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+	
+	disable :show_exceptions   #To show the 'error' pages I made when error occurs. Remove 
+								# to carry out debugging, & restart server
+end
+
+# DB for production
+configure :production do
+	DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
+# Gets executed before every request. So this is done to set @title to
+# the default -- appname -- using the set_title helper
+before do
+	set_title
+end
+
 get '/' do
 	erb :home
 end
