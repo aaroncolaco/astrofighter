@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'data_mapper'
 require './player'
 
 # Reload if in development mode
