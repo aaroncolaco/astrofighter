@@ -3,10 +3,20 @@
 <head>
 	<title><%=@title %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+	<p class="hidden" id="lives"><%= @lives %></p>
+
 	<canvas id="game-canvas"></canvas>
+
+	<!-- Display number of lives -->
+	<div class="lives">
+		<% @lives.to_i.times do %>
+			<i class="fa fa-rocket" id="life-1"></i>
+		<% end %>
+	</div>
 
 	<div class="hidden">
 		<img id="rocket-normal" src="/images/rocket_normal.png"></img>

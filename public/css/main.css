@@ -21,3 +21,19 @@ canvas {
 .hidden {
 	display: none;
 }
+
+.lives {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	margin-top: 2%;
+	margin-right: 2%;
+}
+
+.fa-rocket {
+	color: #ffffff;
+	font-size: 1.8em;
+
+	margin-left: 0.2em;
+}

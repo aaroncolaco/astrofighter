@@ -1,6 +1,6 @@
 function loaded () {
 
-	"use strict"
+	"use strict"	// So 'let' and other stuff can be used
 	
 	var context = null, canvas, global = {};
 	var friction = 0.95;
@@ -10,6 +10,7 @@ function loaded () {
 	global.meteorSizeLarge = 70;
 	global.meteorSizeMedium = 50;
 	global.meteorSizeSmall = 30;
+	global.lives = document.getElementById('lives').innerHTML;
 	
 	var rocket = {
 		spriteNormal: null,
@@ -144,7 +145,7 @@ function loaded () {
 
 		/*Collision detection with rocket*/
 		if ( (Math.abs(this.x - rocket.x) < 30) && (Math.abs(this.y - rocket.y) < 30) ) {
-			console.log("You crashed!");
+			rocketCrash();
 		};
 
 		
@@ -236,7 +237,7 @@ function loaded () {
 		} else if (rocket.y < 0) {
 			rocket.y = global.height;
 		};
-	}
+	};
 
 	function keydown (event) {
 		let key = event.keyCode;
@@ -296,6 +297,8 @@ function loaded () {
 
 		document.addEventListener('keydown', keydown);
 		document.addEventListener('keyup', keyup);
+
+		console.log( "Lives left: " + global.lives);
 	};
 
 	function update () {
@@ -326,13 +329,25 @@ function loaded () {
 	};
 
 	init();
-	
+
 	var step = function (timestamp) {
 		update();
 		draw();
 		window.requestAnimationFrame(step);
 	};
 	window.requestAnimationFrame(step);	
+
+	function rocketCrash () {
+
+		if (global.lives > 1) {
+			global.lives = global.lives - 1;
+			window.location = "/game?lives=" + global.lives;
+			throw new Error("Thrown to stop script from continuing executing");
+		} else if (global.lives == 1 || global.lives < 1) {
+			window.location = "/";
+			throw new Error("Thrown to stop script from continuing executing");
+		};
+	};
 };
 
 window.onload = loaded;

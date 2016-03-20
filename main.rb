@@ -5,6 +5,7 @@ require './player'
 require 'sinatra/reloader' if development?
 
 set :app_name, 'Astrofighter'
+set :lives, 3	# Number of lives in the game
 
 # for development
 configure :development do
@@ -35,6 +36,8 @@ end
 
 get '/game/?' do 	# for /game & /game/ 
 	@title = "Asteroid Game"
+	@lives = params[:lives] || settings.lives	# 3 lives at start of game
+	
 	erb :game, :layout => nil	# So that default layout not used
 end
 
