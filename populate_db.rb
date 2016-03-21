@@ -1,6 +1,11 @@
-require './player.rb'
+# Run with bunble exec ruby populate_db.rb
+
+require "./player.rb"
 
 no_of_players = 10
+
+# Clear db
+Player.all.destroy
 
 # Populate db
 no_of_players.times do |var|
@@ -11,5 +16,4 @@ no_of_players.times do |var|
 	player.save
 end
 
-# Clear db
-# Player.all.destroy
+puts "Done"
