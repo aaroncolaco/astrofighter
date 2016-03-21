@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="/css/game_over.css">	
+
+<div class="game-over">
+	<div class="container">
+
+		<h1>Game Over</h1>
+		<h3>Please fill details for scoreboard</h3>
+		
+		<form id="form" method="POST" action="/players" role="form" autocomplete="on">
+
+			<div class="input-group">
+				<span class="input-group-addon" id="score-sign">
+					<i class="fa fa-bolt"></i>
+				</span>
+				<input class="form-control" type="text" name="player[score]" id="player-score" value=<%= @score %> aria-describedby="score-sign" readonly="readonly" >
+			</div>
+
+			<div class="input-group">
+				<span class="input-group-addon" id="name-sign">
+					<i class="fa fa-user"></i>
+				</span>
+				<input type="text" class="form-control" name="player[name]" id="player-name" required aria-describedby="name-sign" placeholder="Name *" autofocus >
+			</div>
+
+			<div class="input-group">
+				<span class="input-group-addon" id="email-sign">
+					<i class="fa fa-envelope"></i>
+				</span>
+				<input type="email" class="form-control" name="player[email]" id="player-email" required aria-describedby="email-sign" placeholder="Email *" >
+			</div>
+
+			<button type="submit" class="btn btn-default" >
+				<i class="fa fa-paper-plane"></i> Enter
+			</button>
+		</form>
+	</div>
+</div>

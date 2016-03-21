@@ -1,0 +1,57 @@
+.game-over {
+	background-image:url('/images/space2.jpg');
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;   
+}
+
+.game-over .container {
+	position: relative;
+	top: 20%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.game-over h1 {
+	color: #ffffff;
+	font-size: 3em;
+}
+
+.game-over h3 {
+	color: #ffffff;
+	font-size: 1.5em;
+}
+
+.game-over #form {
+	margin-top: 5%;
+}
+
+.game-over .input-group {
+	width: 30%;
+	margin-bottom: 2%;
+}
+
+.game-over .fa {
+	color: #ffffff;
+	font-size: 1em;
+}
+
+.game-over #form input, .game-over #form .input-group-addon {
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 1em;
+}
+
+.game-over #form .btn, .game-over #form .btn .fa {
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 1.1em;
+
+	margin-top: 2%;
+	margin-bottom: 5%;
+}
+
+.form-control::-webkit-input-placeholder { color: white; font-size: 1em; }
+.form-control:-moz-placeholder { color: white; font-size: 1em; }
+.form-control::-moz-placeholder { color: white; font-size: 1em; }
+.form-control:-ms-input-placeholder { color: white; font-size: 1em; }

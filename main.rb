@@ -41,9 +41,30 @@ get '/game/?' do 	# for /game & /game/
 	erb :game, :layout => nil	# So that default layout not used
 end
 
+get '/gameover/?' do
+	@title = "Game Over"
+	@score = params[:score] || 0
+
+	erb :game_over
+end
+
 get '/scores' do
 	@player = Player.all(:order => [ :score.desc ])	# Scores in descending order
 	erb :scores
+end
+
+post '/players?' do
+	player = params[:player] # From form submission
+
+	player_id = get_player_id(player[:email]) # Get/Check player data using helper method
+
+	if player_id.nil?
+		Player.create(player)
+	else
+		Player.get(player_id).update(player)
+	end
+
+	redirect to ('/scores')
 end
 
 # All errors
@@ -66,5 +87,12 @@ helpers do
 		# if not given, set to app name. That is why the OR
 		@title ||= settings.app_name
 		# Done so that we don't have to put this login in the erb file like before
+	end
+	def get_player_id(email)
+		player = Player.first(:email => email)
+		if player.nil?
+			return nil
+		end
+		return player.id
 	end
 end
