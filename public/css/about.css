@@ -21,3 +21,15 @@
 	color: #ffffff;
 	font-size: 1.5em;
 }
+
+.about .btn-default {
+	color: #ffffff;
+	background-color: transparent;
+	font-size: 1.2em;
+
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.about .btn-default:hover {
+	background-color: #5a5aad;
+}
