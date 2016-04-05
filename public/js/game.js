@@ -10,7 +10,13 @@ function loaded () {
 	global.meteorSizeLarge = 70;
 	global.meteorSizeMedium = 50;
 	global.meteorSizeSmall = 30;
+	// Points for breaking meteors
+	global.smallMeteorPoints = 5;
+	global.mediumMeteorPoints = 10;
+	global.largeMeteorPoints = 15;
+	
 	global.lives = document.getElementById('lives').innerHTML;
+	global.score = parseInt(document.getElementById('score').innerHTML);
 	
 	var rocket = {
 		spriteNormal: null,
@@ -88,11 +94,14 @@ function loaded () {
 					switch(meteorSize) {
 						case global.meteorSizeLarge:
 							addMeteors(global.meteorSizeMedium);
+							global.score += global.smallMeteorPoints;
 							break;
 						case global.meteorSizeMedium:
 							addMeteors(global.meteorSizeSmall);
+							global.score += global.mediumMeteorPoints;
 							break;
 						case global.meteorSizeSmall:
+							global.score += global.largeMeteorPoints;
 							break;
 						default:
 							console.log("Meteor size is undetermined")
@@ -299,6 +308,7 @@ function loaded () {
 		document.addEventListener('keyup', keyup);
 
 		console.log( "Lives left: " + global.lives);
+		console.log( "Score: " + global.score);
 	};
 
 	function update () {
@@ -341,10 +351,10 @@ function loaded () {
 
 		if (global.lives > 1) {
 			global.lives = global.lives - 1;
-			window.location = "/game?lives=" + global.lives;
+			window.location = "/game?lives=" + global.lives + "&score=" + global.score;
 			throw new Error("Thrown to stop script from continuing executing");
 		} else if (global.lives == 1 || global.lives < 1) {
-			window.location = "/";
+			window.location = "/gameover?score=" + global.score;
 			throw new Error("Thrown to stop script from continuing executing");
 		};
 	};
