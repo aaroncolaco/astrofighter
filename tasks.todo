@@ -15,8 +15,8 @@
    ☐ Destroy bullet once outside screen
  Improvements to be made:
   ✔ Add proper bullet sprite @done (16-01-04 12:49)
-  ☐ Align bullet to tip of rocket - Natasha pending
-  ☐ Improve collision detection
+  ✔ Align bullet to tip of rocket - Natasha pending @done (16-04-06 15:32)
+  ✔ Improve collision detection @done (16-04-06 15:32)
   Extra stuff:
     ✔ Add scoreboard with high scores @done (16-03-01 12:20)
     ✔ Add lives @done (16-03-21 16:13)

@@ -42,13 +42,30 @@ canvas {
 }
 
 
-body .planet #planet-1 {
-	/*height: 5%;*/
-	width: 5%;
+body .celestial-bodies #planet-1 {
+	width: 8%;
 
 	position: absolute;
 
 	margin-top: -30%;
 	margin-left: 10%;
+}
 
+
+body .celestial-bodies #planet-2 {
+	width: 12%;
+
+	position: absolute;
+
+	margin-top: -45%;
+	margin-left: 70%;
+}
+
+body .celestial-bodies #planet-3 {
+	width: 7%;
+
+	position: absolute;
+
+	margin-top: -10%;
+	margin-left: 70%;
 }
