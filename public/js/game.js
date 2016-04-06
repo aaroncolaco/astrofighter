@@ -7,9 +7,9 @@ function loaded () {
 	var meteor = [], bullet = [];
 	
 	global.initialMeteorNumber = 8;
-	global.meteorSizeLarge = 70;
-	global.meteorSizeMedium = 50;
-	global.meteorSizeSmall = 30;
+	global.meteorSizeLarge = 110;
+	global.meteorSizeMedium = 80;
+	global.meteorSizeSmall = 50;
 	// Points for breaking meteors
 	global.smallMeteorPoints = 5;
 	global.mediumMeteorPoints = 10;

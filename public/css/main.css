@@ -16,6 +16,9 @@ html, body {
 canvas { 
 	/* To remove the scrollbars */
 	display:block;
+	background-image: url('/images/background.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .hidden {
@@ -36,4 +39,16 @@ canvas {
 	font-size: 1.8em;
 
 	margin-left: 0.2em;
+}
+
+
+body .planet #planet-1 {
+	/*height: 5%;*/
+	width: 5%;
+
+	position: absolute;
+
+	margin-top: -30%;
+	margin-left: 10%;
+
 }
