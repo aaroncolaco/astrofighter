@@ -27,13 +27,6 @@
 					<a href="/scores">Scores</a>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<% if !session[:admin] %>
-					<a href="/login" class="btn btn-default navbar-btn">Sign in</a>
-				<% else %>
-					<a href="/logout" class="btn btn-default btn-danger navbar-btn">Sign out</a>
-				<% end %>
-			</ul>
 		</div>
 	</div>
 </nav>
