@@ -5,8 +5,8 @@ function loaded () {
 	var context = null, canvas, global = {};
 	var friction = 0.95;
 	var meteor = [], bullet = [];
-	var explosion_audio = new Audio('/audio/explosion.mp3');
-	var shot_audio = new Audio('/audio/shot.mp3');
+	var explosionAudio = new Audio('/audio/explosion.mp3');
+	var shotAudio = new Audio('/audio/shot.mp3');
 	
 	
 	global.initialMeteorNumber = 8;
@@ -83,7 +83,7 @@ function loaded () {
 				if ( (Math.abs(this.x - met.x) < 25) && (Math.abs(this.y - met.y) < 25) && (this.hit === false) ) {
 					console.log("BOOMMMMMM!");
 
-					explosion_audio.play(); // meteor break-up audio
+					explosionAudio.play(); // meteor break-up audio
                       
 					// Get hit meteor's metadata
 					let meteorSize = met.width;
@@ -274,7 +274,7 @@ function loaded () {
 				rocket.down();
 				break;
 			case global.space:
-				shot_audio.play(); // bullet fired audio 
+				shotAudio.play(); // bullet fired audio 
 				bullet.push(new Bullet());
 				break;
 		}
