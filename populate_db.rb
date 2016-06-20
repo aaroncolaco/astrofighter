@@ -1,4 +1,4 @@
-# Run with bunble exec ruby populate_db.rb
+# Run with bundle exec ruby populate_db.rb
 
 require "./player.rb"
 
