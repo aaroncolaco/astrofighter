@@ -20,12 +20,11 @@
   Extra stuff:
     ✔ Add scoreboard with high scores @done (16-03-01 12:20)
     ✔ Add lives @done (16-03-21 16:13)
-    ☐ Add audio
+    ✔ Add audio @done (16-06-26 22:55)
     ☐ Share score on Facebook
-    ☐ Navbar color change on scrolling
     Animations:
-      ☐ Planets
-      ☐ Stars
+      ✔ Planets @done (16-06-26 22:55)
+      ✔ Stars @done (16-06-26 22:55)
       ☐ Black Holes
   Documentation:
     ✔ SRS - Kimberly @done (16-01-09 12:49)
