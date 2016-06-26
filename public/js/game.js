@@ -14,9 +14,9 @@ function loaded () {
 	global.meteorSizeMedium = 80;
 	global.meteorSizeSmall = 50;
 	// Points for breaking meteors
-	global.smallMeteorPoints = 5;
+	global.smallMeteorPoints = 15;
 	global.mediumMeteorPoints = 10;
-	global.largeMeteorPoints = 15;
+	global.largeMeteorPoints = 5;
 	
 	global.lives = document.getElementById('lives').innerHTML;
 	global.score = parseInt(document.getElementById('score').innerHTML);
@@ -102,14 +102,14 @@ function loaded () {
 					switch(meteorSize) {
 						case global.meteorSizeLarge:
 							addMeteors(global.meteorSizeMedium);
-							global.score += global.smallMeteorPoints;
+							global.score += global.largeMeteorPoints;
 							break;
 						case global.meteorSizeMedium:
 							addMeteors(global.meteorSizeSmall);
 							global.score += global.mediumMeteorPoints;
 							break;
 						case global.meteorSizeSmall:
-							global.score += global.largeMeteorPoints;
+							global.score += global.smallMeteorPoints;
 							break;
 						default:
 							console.log("Meteor size is undetermined")
